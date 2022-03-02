@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor aula</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="tudo">
+        <h1>Conversor de temperatura</h1>
+            <div id="opcoes">
+                <label>Digite um valor para realizar conversao:</label>
+                    <input id="valor" placeholder="Digite a temperatura"></input >
+                    <label>Selecione a escala de temperatura:</label>
+                <select id="opçoes"> 
+                    <option value="cel">Celsius</option>
+                    <option value="f">Fahrenhreit</option>
+                    <option value="k">Kelvin</option>
+                    <option value="r">Rankine</option>
+                </select>
+                <label></label><input type="button" value="Converter" id="botao"></label>
+            </div> 
+        <div id="inputs">
+                <form>
+                    <p>Celsius: <input id="Celsius" placeholder="Temperatura em Celsius"></input></p>
+                    <p>Fahrenhreit: <input id="Fahrenhreit" placeholder="Temperatura em Fahrenhreit"></input></p>
+                    <p>Kelvin: <input id="Kelvin" placeholder="Temperatura em Kelvin"></input></p>
+                    <p>Rankine: <input id="Rankine" placeholder="Temperatura em Rankine"></input></p>
+                    <button type="reset">Limpar</button>
+                </form>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#botao").onclick=function(){
+    let get
+    get= document.getElementById('valor')
+    let convertido=parseInt(get.value)
+    let coisa 
+    coisa=document.getElementById('opçoes')
+    if(coisa.value=='cel'){
+        let fa=((convertido*1.8)+32)
+        let fa2=Math.trunc(fa)
+        let kel=(convertido+273)
+        let kel2=Math.trunc(kel)
+        let ran=(convertido+273.15)*1.8
+        let ran2=Math.trunc(ran)
+        document.querySelector("#Fahrenhreit").value=fa2+" °F"
+        document.querySelector("#Celsius").value=convertido+" °C"
+        document.querySelector("#Kelvin").value=kel2+" K"
+        document.querySelector("#Rankine").value=ran2+" °R"
+    }
+    else if(coisa.value=='f'){
+        let cel=(convertido-32)/1.8
+        let cel2=Math.trunc(cel)
+        let kel=(convertido+459.67)/1.8
+        let kel2=Math.trunc(kel)
+        let ran=convertido+459.67
+        let ran2=Math.trunc(ran)
+        document.querySelector("#Celsius").value=cel2+" °C"
+        document.querySelector("#Fahrenhreit").value=convertido+" °F"
+        document.querySelector("#Kelvin").value=kel2+" K"
+        document.querySelector("#Rankine").value=ran2+" °R"
+    }
+    else if(coisa.value=="k"){
+        let cel=convertido-273
+        let cel2=Math.trunc(cel)
+        let fa=(convertido-273.15)*1.8+32
+        let fa2=Math.trunc(fa)
+        let ran=convertido*1.8
+        let ran2=Math.trunc(ran)
+        document.querySelector("#Celsius").value=cel2+" °C"
+        document.querySelector("#Fahrenhreit").value=fa2+" °F"
+        document.querySelector("#Rankine").value=ran2+" °R"
+        document.querySelector("#Kelvin").value=convertido+" K"
+    }
+    else if(coisa.value=="r"){
+        let cel=(convertido/8)-273.15
+        let cel2=Math.trunc(cel)
+        let fa=convertido-459.67
+        let fa2=Math.trunc(fa)
+        let kel=convertido/1.8
+        let kel2=Math.trunc(kel)
+        document.querySelector("#Celsius").value=cel2+" °C"
+        document.querySelector("#Fahrenhreit").value=fa2+" °F"
+        document.querySelector("#Kelvin").value=kel2+" K"
+        document.querySelector("#Rankine").value=convertido+" °R"
+    }
+}
+    </script>
+</body>
+</html>
